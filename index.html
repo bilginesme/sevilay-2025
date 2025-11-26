@@ -1,56 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    
-    <!-- 1. Crucial Viewport settings for Mobile -->
-    <!-- 'user-scalable=no' prevents zooming which ruins the app feel -->
+        <!-- 1. Crucial Viewport settings for Mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    
-    <title>Doğum günü</title>
 
-    <!-- 2. Apple Specific Tags for "Add to Home Screen" -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#e0f2f1"> <!-- Matches your background color -->
+    <title>İyi ki doğdun</title>
 
     <style>
-      /* 3. The CSS Fixes for iPhone Safari */
-      body {
-        margin: 0;
-        padding: 0;
-        background-color: #e0f2f1; /* Your soft mint background */
-        overflow: hidden;
 
-        /* This locks the body so it doesn't "bounce" when you scroll */
-        position: fixed; 
+    /* --- ROTATION PROMPT STYLES --- */
+      #rotation-prompt {
+        display: none; /* Hidden by default (Landscape is good) */
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-
-        /* The Magic Unit: 100dvh (Dynamic Viewport Height) */
-        /* This calculates height MINUS the Safari address bar */
-        height: 100dvh; 
-        
-        /* Center content if your game is smaller than the screen */
-        display: flex;
+        height: 80;
+        background-color: #FFFF; /* Deep Teal matching your theme */
+        color: #004d40;
+        z-index: 9999; /* Ensure it sits on top of everything */
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
+      }
+
+      #rotation-prompt h1 {
+        margin: 20px 0 10px 0;
+        font-size: 24px;
+        font-family: sans-serif;
+      }
+
+      #rotation-prompt p {
+        font-family: sans-serif;
+        font-size: 16px;
+        opacity: 0.8;
+      }
+
+      /* --- MEDIA QUERY: DETECT PORTRAIT --- */
+      @media screen and (orientation: portrait) {
+        /* Show the prompt */
+        #rotation-prompt {
+          display: flex;
+        }
+        /* Hide the Phaser Canvas so it doesn't mess up layout behind the prompt */
+     
       }
     </style>
-    <script type="module" crossorigin src="/sevilay-2025/assets/index-CT0axB7e.js"></script>
-  </head>
-  
-  <body>
-    <!-- Your DOM elements (like the rotation prompt or game container) usually go here. 
-         If you are generating everything via Phaser in main.ts, this is fine. -->
-         
 
-    <!-- 4. The "Swipe Trick" to retract address bar on load -->
-    <script>
-      window.addEventListener("load", function() {
-        setTimeout(function(){
-            window.scrollTo(0, 1);
-        }, 0);
-      });
-    </script>
+    <script type="module" crossorigin src="/sevilay-2025/assets/index-fncbBSzf.js"></script>
+  </head>
+
+  <body style="overflow: hidden; background-color: white;">
+    
+    <div id="rotation-prompt">
+        <h1>Lütfen yana çevir</h1>
+        <p>Doğum günü kartpostalı <br>en iyi yatay görünür</p>
+    </div>
+    
   </body>
+
 </html>
